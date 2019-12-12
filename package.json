@@ -1,6 +1,6 @@
 {
-  "name": "connect",
-  "version": "3.7.0",
+  "name": "Email Builder",
+  "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "dependencies": {
