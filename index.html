@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <title>Uru Builder ver 0.0.1_Alpha</title>
+    <link href="css/builder.css" rel="stylesheet" />
+    <style>
+        /* Client-specific Styles */
+
+        div,
+        p,
+        a,
+        li,
+        td {
+            -webkit-text-size-adjust: none;
+        }
+
+        #outlook a {
+            padding: 0;
+        }
+
+        /* Force Outlook to provide a "view in browser" menu link. */
+        html {
+            width: 100%;
+        }
+
+        body {
+            width: 100% !important;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            margin: 0px;
+            padding: 0;
+        }
+
+        img {
+            outline: none;
+            text-decoration: none;
+            border: none;
+            -ms-interpolation-mode: bicubic;
+        }
+
+        a img {
+            border: none;
+        }
+
+        table td {
+            border-collapse: collapse;
+        }
+
+        table {
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        a {
+            color: #33b9ff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body style="margin:0px; font-family:Arial, sans-serif, Helvetica;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td align="center" valign="top">
+                <button id="editBtn" type="button">Edit Document</button>
+                <button id="builder-preview-btn" class="preview-btn" type="button" onclick="preview();">Preview & Download File</button>
+                <table width="600" border="0" cellpadding="0" cellspacing="0" align="center" class="max-width"
+                    bgcolor="#f8f4ef">
+                    <tr>
+                        <td align="center" valign="top">
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" id="previewArea">
+                                <tr>
+
+                                    <td align="right" valign="middle" class="hide builder-btn-pos">
+                                        <div class="imagediv">
+                                            <button id="swapImgBtn1" class="swapImgBtn">Swap Image</button>
+                                            <input builderItem="1" id="selectfile1" class="selectfile" type="file" name="" style="display: none;" />
+                                        </div>
+                                        <img src="upload_builder.jpg" id="current-img1">
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td align="center" valign="top">
+                                        <table id="editDocument" width="100%" border="0" cellpadding="0" cellspacing="0"
+                                            align="center">
+                                            <tr>
+                                                <td align="left" valign="top" width="44">&nbsp;</td>
+                                                <td valign="top" align="left">
+                                                    <table cellpadding="0" cellspacing="0" border="0" align="left"
+                                                        width="auto">
+                                                        <tr>
+                                                            <td id="title" align="left" valign="top"
+                                                                style="font-size: 38px; font-family: Arial; color: #000000; font-weight: bold;padding-top: 15px;">
+                                                                Type Content Here
+                                                            </td>
+                                                        </tr>
+
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="top" width="51">&nbsp;</td>
+                                                <td id="content" align="left" valign="top"
+                                                    style="font-size: 16px; font-family: Arial; line-height: 21px; color: #6f6f6f; padding-top: 12px; padding-bottom: 37px;">
+                                                    Text1 | Text2 | Text3
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td align="left" valign="top" style="line-height: 0px;" class="builder-btn-pos">
+                                        <div class="imagediv">
+                                            <button id="swapImgBtn2" class="swapImgBtn">Swap Image</button>
+                                            <input builderItem="2" id="selectfile2" class="selectfile" type="file" name="" style="display: none;" />
+                                        </div>
+                                        <img src="upload_builder.jpg" id="current-img2" alt="Jobs"
+                                            style="border: 0; display: block; line-height: 0px;">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td align="left" valign="top" style="line-height: 0px;" class="builder-btn-pos">
+                                        <div class="imagediv">
+                                            <button id="swapImgBtn3" class="swapImgBtn">Swap Image</button>
+                                            <input builderItem="3" id="selectfile3" class="selectfile" type="file" name="" style="display: none;" />
+                                        </div>
+                                        <img src="upload_builder.jpg" id="current-img3" alt="New Minds on Board"
+                                            style="line-height: 0px; border: 0; display: block;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" valign="top" style="line-height: 0px;" class="builder-btn-pos">
+                                        <div class="imagediv">
+                                            <button id="swapImgBtn4" class="swapImgBtn">Swap Image</button>
+                                            <input builderItem="4" id="selectfile4" class="selectfile" type="file" name="" style="display: none;" />
+                                        </div>
+                                        <img src="upload_builder.jpg" id="current-img4" alt="New Minds on Board"
+                                            style="line-height: 0px; border: 0; display: block;">
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+
+</html>
