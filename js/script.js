@@ -1,6 +1,12 @@
 var editBtn = document.getElementById('editBtn');
 var editables = document.querySelectorAll('#title, #content')
 
+if (localStorage["title"] != null || localStorage["content"] != null) {
+    document.getElementById("title").innerHTML = localStorage.getItem("title");
+    document.getElementById("content").innerHTML = localStorage.getItem("content");
+    //document.getElementById("content").innerHTML = localStorage.getItem("content");
+}
+
 editBtn.addEventListener('click', function (e) {
     if (!editables[0].isContentEditable) {
         editables[0].contentEditable = 'true';
@@ -8,6 +14,7 @@ editBtn.addEventListener('click', function (e) {
         //editables[2].contentEditable = 'true';
         editBtn.innerHTML = 'Save Changes';
         editBtn.style.backgroundColor = '#6F9';
+        
     } else {
         // Disable Editing
         editables[0].contentEditable = 'false';
@@ -34,6 +41,8 @@ $(".swapImgBtn").click(function (e) {
         var file = input.files[0];
         console.log(builderItem);
         drawOnCanvas(file, builderItem);
+        var imgAsDataURL = imgCanvas.toDataURL("image/png");
+        localStorage.setItem(file, imgAsDataURL)
     };
 });
 
@@ -56,8 +65,18 @@ function drawOnCanvas(file, i) {
 
 
 function preview() {
-    var source = document;
-    window.location.href = "preview.html?data=" + btoa(source);
-  }
-
-  
+    let btn = document.querySelectorAll('.swapImgBtn');
+    btn.forEach(e => e.style.display = 'none');
+    document.querySelector("#editBtn").style.display = 'none';
+    document.querySelector("#builder-preview-btn").innerText = 'Download';
+    document.querySelector("#builder-preview-btn").addEventListener('click', e => {
+        document.querySelector("#builder-preview-btn").style.display = 'none';
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/html;charset=UTF-8,' + encodeURIComponent(document.documentElement.outerHTML))
+        element.setAttribute('download', "uru_emailer.html");
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+    })
+}
